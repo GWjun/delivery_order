@@ -74,11 +74,22 @@ const MyReact = (function MyReact() {
     cursor = 0;
   }
 
-  function cleanupEffects() {
-    cleanups.forEach((cleanup) => typeof cleanup === "function" && cleanup());
-  }
+  // function cleanupEffects() {
+  //   cleanups.forEach((cleanup) => typeof cleanup === "function" && cleanup());
+  // }
 
-  return { useState, useEffect, resetCursor };
+  const useParams = () => {
+    return React.useMemo(() => {
+      const params = new URLSearchParams(window.location.search);
+      const paramObject = {};
+      for (const [key, value] of params) {
+        paramObject[key] = value;
+      }
+      return paramObject;
+    }, [window.location.search]);
+  };
+
+  return { useParams };
 })();
 
 export default MyReact;

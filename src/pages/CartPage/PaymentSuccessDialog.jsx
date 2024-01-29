@@ -1,15 +1,21 @@
 import Dialog from "../../components/Dialog";
 import Button from "../../components/Button";
+import { useNavigate } from "react-router-dom";
+import { useDialog } from "../../lib/MyLayout";
 
 const PaymentSuccessDialog = () => {
+  const navigate = useNavigate();
+
+  const { closeDialog } = useDialog();
+
   const handleClickNo = () => {
-    // TODO: closeDialog();
-    // TODO: navigate("/");
+    closeDialog();
+    navigate("/");
   };
 
   const handleClickYes = () => {
-    // TODO: closeDialog();
-    // TODO: navigate("/order");
+    closeDialog();
+    navigate("/order");
   };
 
   return (
