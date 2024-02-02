@@ -25,7 +25,9 @@ const CartPage = () => {
     try {
       await OrderApi.createOrder(values);
     } catch (e) {
+      openDialog(<ErrorDialog />);
       console.errer(e);
+      return;
     }
     finishLoading();
     openDialog(<PaymentSuccessDialog />);

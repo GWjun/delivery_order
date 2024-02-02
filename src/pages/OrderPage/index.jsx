@@ -25,6 +25,7 @@ const OrderPage = () => {
     } catch (e) {
       openDialog(<ErrorDialog />);
       console.error(e);
+      return;
     }
     finishLoading();
   };
